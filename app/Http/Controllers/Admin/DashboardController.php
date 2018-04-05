@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class DashboardController extends BaseController
@@ -38,6 +39,27 @@ class DashboardController extends BaseController
         $data['completed_order'] = $orders->where('order_status', 'completed')->count();
         $data['cancel_order'] = $orders->where('order_status', 'cancel')->count();
         return view('admin.dashboard')->with($data);
+    }
+
+
+    public function settings(){
+        $data['settings'] = Setting::first();
+        return view('admin.settings')->with($data);
+    }
+
+
+    public function updateSettings(Request $request)
+    {
+        $settings = Setting::find(1);
+        $settings->notification_email = $request->notification_email;
+        $settings->referral_bonus = $request->referral_bonus;
+        $settings->delivery_fee = $request->delivery_fee;
+        $settings->processing_fee = $request->processing_fee;
+        $settings->save();
+
+        $request->session()->flash('msg_success', 'Settings successfully update.');
+
+        return redirect()->back();
     }
 
 

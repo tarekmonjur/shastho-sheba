@@ -35,7 +35,10 @@ trait RegistersUsers
         $this->validator($request->all())->validate();
 
         // event(new Registered($user = $this->create($request->all())));
-         $user = $this->create($request->all());
+
+        $user = $this->create($request->all());
+        $this->update($user, $request->referrer_code);
+
         // Mail::to($user->email)->send(new EmailVerifyMail($user));
 
         $this->guard()->login($user);
@@ -65,4 +68,6 @@ trait RegistersUsers
     {
         $request->session()->flash('success','Account Successfully Created!');
     }
+
+
 }

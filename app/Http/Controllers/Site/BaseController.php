@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Models\Setting;
 use App\Models\MedicineCategory;
 use App\Models\MedicineCompany;
 
@@ -18,6 +19,8 @@ class BaseController extends Controller
     public function __construct()
     {
         $this->headerMenuData = $this->getHeaderMenuData();
+        $this->settings = $this->settings();
+
         $this->middleware(function($request, $next){
             $this->auth = Auth::guard()->user();
             view()->share('auth',$this->auth);
@@ -32,6 +35,11 @@ class BaseController extends Controller
             // dd(LaraCart::total($formatted = false), LaraCart::getItems());
             return $next($request);
         });
+    }
+
+
+    protected function settings(){
+        return Setting::first();
     }
 
 
@@ -57,4 +65,36 @@ class BaseController extends Controller
         ->limit(13)->get();
         return $data;
     }
+
+
+    protected function generateReferralCode($id, $first_name, $mobile_no)
+    {
+        $inputString = str_replace(' ', '-', $first_name);
+        $inputString = preg_replace(['/[^A-Za-z0-9\-]/'], '', $inputString);
+        $inputStringAry = explode("-", $inputString);
+        foreach($inputStringAry as $val){
+            if(strlen($val) > 2){
+                $inputString = $val;
+                break;
+            }
+        }
+        if(empty($inputString)){
+            $inputString = "shastho";
+        }
+        
+        $name_prefix = $inputString;
+        if(!empty($mobile_no)){
+            $row_id_prefix = substr(str_pad($id,3,"0",STR_PAD_LEFT),-3);
+            $mobile_prefix = str_shuffle(substr($mobile_no,-3));
+        }else{
+            $row_id_prefix = substr(str_pad($id,3,"0",STR_PAD_LEFT),-3);
+            $mobile_prefix = str_shuffle(substr($row_id_prefix,-3));
+        }
+        
+        $generate_referral_code = "$name_prefix$row_id_prefix$mobile_prefix";
+        return $generate_referral_code;
+    }
+
+
+
 }

@@ -36,7 +36,7 @@ class MedicineCategoryRequest extends FormRequest
 
         return [
             'medicine_category_type' => 'required',
-            'medicine_category_name' => ['required', 'min:3', 'max:200', new AlphaSpacesDot()],
+            'medicine_category_name' => ['required', 'min:3', 'max:200'],
             'medicine_category_slug' => $slug,
             'category_image_box' => 'nullable|mimes:jpeg,jpg,png,gif|max:4000',
             'category_image_top_banner' => 'nullable|mimes:jpeg,jpg,png,gif|max:4000',

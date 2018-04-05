@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\Medicine;
+use App\Models\Promotion;
+use App\Mail\OrderNotificationMail;
+
 use Illuminate\Http\Request;
 use LukePOLO\LaraCart\Facades\LaraCart;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Site\BaseController;
 
 class DashboardController extends BaseController
@@ -61,6 +65,14 @@ class DashboardController extends BaseController
     }
 
 
+    public function promotion()
+    {
+        $data['title'] = "Promotion";
+        $data['promotions'] = Promotion::where('user_id', $this->auth->id)->paginate(20);
+        return view('dashboard.promotion')->with($data);
+    }
+
+
     public function orderPlace(Request $request)
     {
         $cartItems = LaraCart::getItems();
@@ -83,8 +95,8 @@ class DashboardController extends BaseController
             $invoice->total_discount = 0.00;
             $invoice->total_discount_amount = $cartTotal - $invoice->total_discount;
             $invoice->vat_amount = 0.00;
-            $invoice->delivery_fee = 0.00;
-            $invoice->processing_fee = 0.00;
+            $invoice->delivery_fee = $this->settings->delivery_fee;
+            $invoice->processing_fee = $this->settings->processing_fee;
             $invoice->total_payable_amount = $invoice->total_discount_amount + $invoice->processing_fee + $invoice->delivery_fee + $invoice->vat_amount;
             $invoice->save();
 
@@ -109,13 +121,21 @@ class DashboardController extends BaseController
             if(count($orderDetails) > 0){
                 OrderDetails::insert($orderDetails);
             }
+
+            DB::commit();
+
+            if(!empty($this->settings->notification_email)){
+                Mail::to($this->settings->notification_email)->send(new OrderNotificationMail());
+            }
+
             $request->session()->flash('success', 'Your order successfully placed.');
             LaraCart::destroyCart();
+
         }catch(\Exception $e){
             DB::rollBack();
             $request->session()->flash('warning', 'Sorry! order not placed.');
         }
-        DB::commit();
+        
         return redirect('/dashboard');
     }
 

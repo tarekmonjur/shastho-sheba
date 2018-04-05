@@ -92,4 +92,10 @@ class User extends Authenticatable
     }
 
 
+    public function promotion()
+    {
+        return $this->hasOne('App\Models\Promotion')->orderBy('id', 'desc');
+    }
+
+
 }

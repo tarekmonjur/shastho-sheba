@@ -72,9 +72,9 @@
 
                     <div class="login-social">
 
-                        <a href="" class="span"><i class="fa fa-facebook"></i> sign in with in facebook</a>
+                        <a href="{{url('facebook')}}" class="span"><i class="fa fa-facebook"></i> sign in with in facebook</a>
 
-                        <a href="" class="span bg-google"><i class="fa fa-google"></i> Sign in with Google</a>
+                        <a href="{{url('google')}}" class="span bg-google"><i class="fa fa-google"></i> Sign in with Google</a>
 
                     </div>
 

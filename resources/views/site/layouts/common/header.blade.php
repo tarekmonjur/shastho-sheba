@@ -47,6 +47,7 @@
                                 <span class="shopping-table user">
                                     <ul class="list-group" style="margin:0px">
                                       <li class="list-group-item" style="border-radius: 0px"><a href="{{url('dashboard')}}">Dashboard</a></li>
+                                      <li class="list-group-item" style="border-radius: 0px"><a href="{{url('promotion')}}">Promotion</a></li>
                                       <li class="list-group-item" style="border-radius: 0px"><a href="{{url('logout')}}">Log Out</a></li>
                                     </ul>
                                 </span>

@@ -63,12 +63,19 @@ Route::prefix('/')->namespace('Site\Auth')->group(function(){
     // Verify User Email
     Route::get('verify-email', 'LoginController@sendVerifyEmail');
     Route::get('verify-email/{token}', 'LoginController@verifyEmail');
+
+    //Socail Login
+    Route::get('facebook', 'SocailiteController@facebook');
+    Route::get('login/facebook', 'SocailiteController@facebookLogin');
+    Route::get('google', 'SocailiteController@google');
+    Route::get('login/google', 'SocailiteController@googleLogin');
 });
 
 
 /*************** Site Dashboard Controller Routes *********************/
 Route::prefix('/')->namespace('Dashboard')->group(function(){
    Route::get('/dashboard','DashboardController@index');
+   Route::get('/promotion','DashboardController@promotion');
    Route::get('/order-place','DashboardController@orderPlace');
    Route::get('/order-status/{id}','DashboardController@changeStatus');
    Route::get('/order-invoice/{id}','DashboardController@showInvoice');
@@ -100,6 +107,8 @@ Route::prefix('/admin')->namespace('Admin\Auth')->group(function(){
 /********** ......Admin Dashboard Routes....... *****************/
 Route::prefix('/admin')->namespace('Admin')->group(function(){
    Route::get('/','DashboardController');
+   Route::get('/settings','DashboardController@settings');
+   Route::put('/settings','DashboardController@updateSettings');
 });
 
 /********** ......Orders Routes....... *****************/

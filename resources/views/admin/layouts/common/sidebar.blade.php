@@ -231,6 +231,11 @@
                 </ul>
             </li>
             <?php }?>
+            <li @if($url == 'admin/settings') class="active" @endif style="margin-top: 5px">
+                <a href="{{url('/admin/settings')}}">
+                    <i class="fa fa-share"></i> <span>Settings</span>
+                </a>
+            </li>
         </ul>
     </section>
 </aside>

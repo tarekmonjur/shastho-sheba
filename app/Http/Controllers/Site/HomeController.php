@@ -408,7 +408,8 @@ class HomeController extends BaseController
         $data['slug'] = $slug;
         $data['slug2'] = $slug2;
         $data['category'] = $category;
-        $data['products'] = Medicine::where('medicine_category_id', $category->id)
+        $data['products'] = Medicine::select('medicines.*', 'medicine_offers.offer_status', 'medicine_offers.offer_percent')
+            ->where('medicine_category_id', $category->id)
             ->leftJoin('medicine_offer_maps','medicine_offer_maps.offer_id', '=', 'medicines.id')
             ->leftJoin('medicine_offers',function($q){
                 $q->on('medicine_offers.id', '=', 'medicine_offer_maps.offer_id')

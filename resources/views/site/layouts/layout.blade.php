@@ -65,11 +65,10 @@
 
   gtag('config', 'UA-103610875-2');
 </script>
+
 </head>
 
 <body>
-
-
 
 @include('site.layouts.common.header')
 

@@ -187,6 +187,8 @@
 
     var products = {!! $products !!};
 
+    // console.log(products);
+
     $(document).ready(function(){
         randerProducts(products);
     });

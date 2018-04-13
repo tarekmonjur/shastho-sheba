@@ -428,8 +428,8 @@ function randerProducts(products)
 
 function word_limit(str)
 {
-  if(str.length > 45){
-    str = str.substr(0,45) + '...';
+  if(str != null && str.length > 40){
+    str = str.substr(0,40) + '...';
   }
   return str;
 }

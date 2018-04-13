@@ -1,6 +1,6 @@
 <footer class="footer">
 
-    <div class="container">
+    <div class="container container-custom">
 
         <div class="row">
 
@@ -24,7 +24,7 @@
 
                         <li><a href=""> Reward Points</a></li>
 
-                        <li><a href=""> Refer & Earn</a></li>
+                        <li><a href="{{url('/login?redirect=refer')}}"> Refer & Earn</a></li>
 
                         <li><a href="{{url('/terms-and-conditions')}}"> Terms and Conditions</a></li>
 
@@ -115,7 +115,7 @@
 
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-3">
 
                 <div class="footer-ist-step">
 

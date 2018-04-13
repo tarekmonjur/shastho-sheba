@@ -360,5 +360,85 @@ function cartItemRemove(item_id)
 
 
 
+function randerProducts(products)
+{
+    var html = "";
+
+    document.getElementById('product_item').innerHTML = products.length + " items found";
+
+    for(index in products)
+    {
+        var product = products[index];
+
+        html += '<div class="col-md-4">'+
+
+            '<div class="first-aid-single-product">' +
+
+                '<div class="features-single-item" style="min-height:382px">' +
+
+                    '<a href="'+baseUrl+'/non-prescriptions/'+product.medicine_slug+'" class="offer-buget-area">';
+
+                    if(product.offer_percent){
+
+                        html += '<div class="offer-badge"></div>'+
+
+                            '<div class="b-text">'+ product.offer_percent + '<span class="buget-per">%</span><span class="off-offer">Off</span></div>';
+                    }
+
+                    if(product.medicine_image){
+                        html += '<div class="slide-img-wrapper"><img src="'+baseUrl+'/files/medicine/medium/'+product.medicine_image+'" alt=""></div>';
+                    }else{
+                        html += '<div class="slide-img-wrapper"><img src="'+baseUrl+'/assets/site/img/medicine.jpg" alt=""></div>';
+                    }
+
+                     html += '</a>'+
+
+                    '<div class="features-text-best">'+
+
+                        '<a href="'+baseUrl+'/non-prescriptions/'+product.medicine_slug+'" class="pro-name">'+word_limit(product.medicine_name)+'</a>'+
+
+                        '<span class="price-text">';
+
+                        if(product.offer_percent){
+                            html += '<del>TK.'+product.medicine_price+'</del>'+
+                            'TK.'+ (product.medicine_price - ((product.medicine_price * product.offer_percent) /100)).toFixed(2) +'</span><br>';
+                        }else{
+                            html += 'TK.'+product.medicine_price+'</span><br>';
+                        }
+
+                        html += '<span class="instock">In Stock</span>'+
+
+                        '<div class="view-del"><a href="#" onclick="addToCart('+product.id+')">Add to Cart</a></div>'+
+
+                    '</div>'+
+
+                '</div>'+
+
+            '</div>'+
+
+        '</div>';
+    }
+    document.getElementById('products').innerHTML += html;
+}
+
+
+
+function word_limit(str)
+{
+  if(str.length > 45){
+    str = str.substr(0,45) + '...';
+  }
+  return str;
+}
+
+
+
+function getProducts(){
+
+}
+
+
+
+
 
 

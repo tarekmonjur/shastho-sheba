@@ -1720,6 +1720,8 @@ nav.navigation ul li:hover ul#small-menu{
 
     padding: 14px;
 
+    margin-bottom: 15px;
+
 }
 
 .features-single-item > img {
@@ -3674,6 +3676,10 @@ del {
   margin-bottom: 10px;
 
   margin-top: 11px;
+
+  color: #333;
+
+  min-height: 44px;
 
 }
 

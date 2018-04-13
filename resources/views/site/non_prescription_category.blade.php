@@ -98,7 +98,7 @@
 
                                         <a href="{{url('non-prescriptions/'.$nonPrescriptionCategory->category_slug.'/'.$child->category_slug)}}" style="color:#4183f4">
 
-                                            {{$child->category_name}}
+                                            {{str_limit($child->category_name, 16)}}
 
                                             <span><a href="{{url('non-prescriptions/'.$nonPrescriptionCategory->category_slug.'/'.$child->category_slug)}}">Shop Now</a></span>
 

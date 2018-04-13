@@ -136,6 +136,10 @@ trait AuthenticatesUsers
         if($request->has('redirect') && $request->redirect == 'upload'){
             return redirect('/upload-prescription');
         }
+
+        if($request->has('redirect') && $request->redirect == 'refer'){
+            return redirect('/promotion');
+        }
     }
 
     /**

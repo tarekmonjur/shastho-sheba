@@ -80,8 +80,6 @@ class RegisterController extends BaseController
             'email' => $data['email'],
             'mobile_no' => $data['mobile'],
             'password' => $data['password'],
-            'referral_code' => '',
-            'referrer_code' => $data['referrer_code'],
             'city' => $data['city'],
             'address' => $data['address'],
         ]);

@@ -76,6 +76,7 @@ class MedicineController extends BaseController
             $medicine->medicine_code = $request->medicine_code;
             $medicine->medicine_name = $request->medicine_name;
             $medicine->medicine_slug = $request->medicine_slug;
+            $medicine->medicine_stock = $request->medicine_stock;
             $medicine->medicine_type_id = $request->medicine_type;
             $medicine->medicine_category_id = $request->medicine_category;
             $medicine->medicine_manufacturer_id = $request->medicine_manufacturer;
@@ -137,6 +138,7 @@ class MedicineController extends BaseController
             $medicine->medicine_code = $request->medicine_code;
             $medicine->medicine_name = $request->medicine_name;
             $medicine->medicine_slug = $request->medicine_slug;
+            $medicine->medicine_stock = $request->medicine_stock;
             $medicine->medicine_type_id = $request->medicine_type;
             $medicine->medicine_category_id = $request->medicine_category;
             $medicine->medicine_manufacturer_id = $request->medicine_manufacturer;

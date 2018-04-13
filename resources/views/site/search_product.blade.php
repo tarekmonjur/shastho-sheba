@@ -78,7 +78,7 @@
 
                                 <form action="">
 
-                                    @foreach($companies as $company)
+                                    @foreach($manufacturers as $company)
 
                                         <input type="checkbox"> {{$company->medicine_company_name}}<br>
 

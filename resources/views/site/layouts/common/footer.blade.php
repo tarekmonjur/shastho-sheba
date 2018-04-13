@@ -213,7 +213,7 @@
 
 <div class="copy-right-area">
 
-    <div class="container">
+    <div class="container container-custom">
 
         <div class="row">
 

@@ -72,7 +72,7 @@ class HomeController extends BaseController
                 $q->on('medicine_offers.id', '=', 'medicine_offer_maps.offer_id')
                 ->where('offer_status', 'running');
             })->get();
-            // dd($data['categories']);
+            $data['manufacturers'] = $this->headerMenuData['companies'];
             return view('site.search_product')->with($data);
         }
     }
@@ -344,7 +344,7 @@ class HomeController extends BaseController
             })
             ->get();
 
-            $data['companies'] = $this->getNonPrescriptionCompany();
+            $data['manufacturers'] = $this->getNonPrescriptionCompany();
             return view('site.products')->with($data);
         }else {
             $data['title'] = "Non-Prescriptions Medicine";
@@ -415,7 +415,7 @@ class HomeController extends BaseController
                 ->where('offer_status', 'running');
             })->get();
             // dd($data['products']);
-        $data['companies'] = $this->getNonPrescriptionCompany();
+        $data['manufacturers'] = $this->getNonPrescriptionCompany();
         return view('site.products')->with($data);
     }
 

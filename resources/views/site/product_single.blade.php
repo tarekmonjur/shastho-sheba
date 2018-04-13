@@ -126,54 +126,30 @@
 
 
 
-                    <span class="care-well-product-details">
-						<span class="product-details">Product Details</span>
-						<span class="product-details-manufct">
-							<span class="product-del-manufct-item">Manufacturer<br> <strong>{{$medicine->company->medicine_company_name}}</strong></span>
+                        <span class="care-well-product-details">
+    						<span class="product-details">Product Details</span>
+    						<span class="product-details-manufct">
+    							<span class="product-del-manufct-item">Manufacturer<br> <strong>{{$medicine->company->medicine_company_name}}</strong></span>
 
-							<span class="product-del-manufct-item bordrt-left-right">Medicine Type<br> <strong>{{$medicine->type->type_name}}</strong></span>
+    							<span class="product-del-manufct-item bordrt-left-right">Medicine Type<br> <strong>{{$medicine->type->type_name}}</strong></span>
 
-							<span class="product-del-manufct-item">Power/Size <br> <strong>{{$medicine->medicine_power}}</strong> </span>
-						</span>
-					</span>
+    							<span class="product-del-manufct-item">Power/Size <br> <strong>{{$medicine->medicine_power}}</strong> </span>
+    						</span>
+    					</span>
 
-                    <span class="care-well-product-details" style="height: auto;">
-                        <span class="product-details">Product Side Effect</span>
-                        <span class="product-details-manufct">
-                                {{$medicine->medicine_side_effect}}
+                        <span class="care-well-product-details" style="height: auto;">
+                            <span class="product-details">Product Side Effect</span>
+                            <span class="product-details-manufct">
+                                    {{$medicine->medicine_side_effect}}
+                            </span>
                         </span>
-                    </span>
 
-                    <span class="care-well-product-details" style="height: auto;">
-                        <span class="product-details">Product Description</span>
-                        <span class="product-details-manufct">
-                                {{$medicine->medicine_side_effect}}
+                        <span class="care-well-product-details" style="height: auto;">
+                            <span class="product-details">Product Description</span>
+                            <span class="product-details-manufct">
+                                    {{$medicine->medicine_side_effect}}
+                            </span>
                         </span>
-                    </span>
-
-
-
-<!--                         <div class="product-review">
-
-                            <div class="product-review-content">
-
-                                <h5>PRODUCT REVIEW (0)</h5>
-
-                                No reviews yet
-
-                                <a href="">Write a review </a>
-
-                            </div>
-
-                            <span class="review-rate">
-
-							<i class="fa fa-star"></i><br>
-
-							0/1
-
-						  </span>
-
-                        </div> -->
 
                     </div>
 
@@ -184,6 +160,8 @@
                     <div class="care-well-inside">
 
                         <div class="care-well-form">
+
+                            @if($medicine->medicine_stock == 'yes')
 
                             <span class="care-well-info">Available</span>
 
@@ -224,6 +202,12 @@
                                 <button type="submit" class="adtocart">Add to Cart</button>
 
                             </form>
+
+                            @else
+
+                            <h3 style="padding: 50px 0px">Out of Stock</h3>
+
+                            @endif
 
                         </div>
 

@@ -88,7 +88,7 @@
                         </div>
                         @endif
 
-                        @if(isset($companies))
+                        @if(isset($manufacturers))
                         <div class="single-toggle-section">
 
                             <div data-toggle="collapse" data-target="#chkbox-content-3" class="toggle-btn-section">Manufacturer <i class="fa fa-angle-down"></i></div>
@@ -97,7 +97,7 @@
 
                                 <form action="">
 
-                                    @foreach($companies as $company)
+                                    @foreach($manufacturers as $company)
 
                                         <input type="checkbox"> {{$company->medicine_company_name}}<br>
 

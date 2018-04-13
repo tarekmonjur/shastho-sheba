@@ -243,7 +243,7 @@
                                         <!-- <span class="text-danger">*</span> -->
                                     </label>
                                     <div>
-                                        <input type="radio" name="medicine_is_active" value="yes" class="flat-green">
+                                        <input type="radio" name="medicine_is_active" value="yes" class="flat-green" checked>
                                         <strong>Yse Active</strong>
                                         &nbsp; &nbsp;
                                         <input type="radio" name="medicine_is_active" value="no" class="flat-red">
@@ -259,7 +259,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group {{ $errors->has('medicine_slug') ? ' has-error' : '' }}">
                                     <label for="medicine_slug">Medicine Slug 
                                         <!-- <span class="text-danger">*</span> -->
@@ -268,6 +268,26 @@
                                     @if ($errors->has('medicine_slug'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('medicine_slug') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group {{ $errors->has('medicine_stock') ? ' has-error' : '' }}">
+                                    <label for="medicine_is_new">In Stock Available? 
+                                        <!-- <span class="text-danger">*</span> -->
+                                    </label>
+                                    <div>
+                                        <input type="radio" name="medicine_stock" value="yes" class="flat-green" checked>
+                                        <strong>Yse Available</strong>
+                                        &nbsp; &nbsp;
+                                        <input type="radio" name="medicine_stock" value="no" class="flat-red">
+                                        <strong>Not Available</strong>
+                                    </div>
+                                    @if ($errors->has('medicine_stock'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('medicine_stock') }}</strong>
                                         </span>
                                     @endif
                                 </div>

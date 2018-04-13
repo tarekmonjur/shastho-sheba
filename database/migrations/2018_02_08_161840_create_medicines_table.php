@@ -22,6 +22,7 @@ class CreateMedicinesTable extends Migration
             $table->string('medicine_code',100);
             $table->string('medicine_name',200);
             $table->string('medicine_slug');
+            $table->enum('medicine_stock', ['yes', 'no'])->default('yes');
             $table->string('medicine_power', 50);
             $table->decimal('medicine_price', 10,2)->default(0.0);
             $table->tinyInteger('medicine_unit_per_box')->default(0);

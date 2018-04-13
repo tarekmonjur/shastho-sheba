@@ -405,12 +405,15 @@ function randerProducts(products)
                         }else{
                             html += 'TK.'+product.medicine_price+'</span><br>';
                         }
-
-                        html += '<span class="instock">In Stock</span>'+
-
-                        '<div class="view-del"><a href="#" onclick="addToCart('+product.id+')">Add to Cart</a></div>'+
-
-                    '</div>'+
+                        if(product.medicine_stock == 'yes'){
+                          html += '<span class="instock">In Stock</span>'+
+                          '<div class="view-del"><a href="#" onclick="addToCart('+product.id+')">Add to Cart</a></div>';
+                        }else{
+                          html += '<span class="instock" style="color:red">Out of Stock</span>'+
+                          '<div class="view-del"><a href="#">Not Available</a></div>';
+                        }
+                        
+                     html += '</div>'+
 
                 '</div>'+
 

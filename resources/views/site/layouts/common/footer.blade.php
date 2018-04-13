@@ -61,7 +61,7 @@
 
                         <li><a href=""><i class="fa fa-phone"></i> 01788-630697</a></li>
 
-                        <li><a href=""><i class="fa fa-envelope-open-o"></i> Write to us </a></li>
+                        <li><a href="{{url('contact-us')}}"><i class="fa fa-envelope-open-o"></i> Write to us </a></li>
 
                     </ul>
 

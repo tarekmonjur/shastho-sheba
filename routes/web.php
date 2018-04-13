@@ -40,6 +40,8 @@ Route::prefix('/')->namespace('Site')->group(function(){
    Route::get('/fags','HomeController@faqs');
    Route::get('/about','HomeController@aboutUs');
    Route::get('/terms-and-conditions','HomeController@termsConditions');
+   Route::get('/contact-us','HomeController@contactUs');
+   Route::post('/contact-us','HomeController@contactMail');
 });
 
 

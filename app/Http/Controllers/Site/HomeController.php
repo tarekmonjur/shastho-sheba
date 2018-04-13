@@ -7,7 +7,10 @@ use App\Models\MedicineView;
 use App\Models\Medicine;
 use App\Models\MedicineCategory;
 use App\Models\MedicineCompany;
+use App\Mail\ContactMail;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends BaseController
 {
@@ -463,6 +466,33 @@ class HomeController extends BaseController
         $data['title'] = "terms & conditions";
         return view('site.terms_and_conditions')->with($data);
     }
+
+
+    public function contactUs()
+    {
+        $data['title'] = "Contact Us";
+        return view('site.contactus')->with($data);
+    }
+
+
+    public function contactMail(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:100',
+            'email' => 'required|email|max:100',
+            'mobile' => ['required','min:11','max:11','regex:/^(017|018|016|015|019)[0-9]+$/'],
+            'message' => 'required',
+        ]);
+
+        if(!empty($this->settings->notification_email)){
+            Mail::to($this->settings->notification_email)->send(new ContactMail($request->all()));
+        }
+
+        $request->session()->flash('success', 'Your message successfully send');
+
+        return redirect()->back();
+    }
+
 
     private function toUrl($slugs)
     {

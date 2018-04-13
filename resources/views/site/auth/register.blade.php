@@ -45,7 +45,7 @@
 
                              <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" class="input" name="mobile" value="{{old('mobile')}}" placeholder="Mobile No... (880171....)">
+                                    <input type="text" class="input" name="mobile" value="{{old('mobile')}}" placeholder="Mobile No... (0171....)">
                                     @if ($errors->has('mobile'))
                                         <span class="text-danger">{{ $errors->first('mobile') }}</span>
                                     @endif

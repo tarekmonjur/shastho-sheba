@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\Medicine;
@@ -73,8 +74,32 @@ class DashboardController extends BaseController
     }
 
 
+    public function shippingInfo(Request $request)
+    {
+        if($request->has('shipping')){
+            $request->validate([
+                'mobile_no' => ['required','min:11','max:11','regex:/^(017|018|016|015|019)[0-9]+$/', 'unique:users,mobile_no'],
+                'city' => 'required|string|min:3|max:20',
+                'address' => 'required|string|min:3|max:255',
+            ]);
+
+            $user = User::find($this->auth->id);
+            $user->mobile_no = $request->mobile_no;
+            $user->city = $request->city;
+            $user->address = $request->address;
+            $user->save();
+            return redirect('order-place');
+        }
+        return view('dashboard.shipping_info');
+    }
+
+
     public function orderPlace(Request $request)
     {
+        if(empty($this->auth->city) || empty($this->auth->address) || empty($this->auth->mobile_no)){
+            return redirect('shipping');
+        }
+
         $cartItems = LaraCart::getItems();
         $cartTotal = LaraCart::total($formatted = false);
         $invoice_no = $this->genereateInvoiceNumber();

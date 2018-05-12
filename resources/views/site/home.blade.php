@@ -388,7 +388,7 @@
 
                         <h1>Customer<strong>Served</strong></h1>
 
-                        <h3>18,265,89 <span>and counting</span></h3>
+                        <h3>{{$customer_served}} <span>and counting</span></h3>
 
                     </div>
 

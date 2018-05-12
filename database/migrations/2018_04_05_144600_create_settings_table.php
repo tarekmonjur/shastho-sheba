@@ -19,6 +19,7 @@ class CreateSettingsTable extends Migration
             $table->decimal('referral_bonus', 10, 2)->default(0.00);
             $table->decimal('delivery_fee', 10, 2)->default(0.00);
             $table->decimal('processing_fee', 10, 2)->default(0.00);
+            $table->string('customer_served', 100)->unsigned()->default(0);
             $table->timestamps();
         });
     }

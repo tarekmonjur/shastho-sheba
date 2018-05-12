@@ -55,6 +55,7 @@ class DashboardController extends BaseController
         $settings->referral_bonus = $request->referral_bonus;
         $settings->delivery_fee = $request->delivery_fee;
         $settings->processing_fee = $request->processing_fee;
+        $settings->customer_served = $request->customer_served;
         $settings->save();
 
         $request->session()->flash('msg_success', 'Settings successfully update.');

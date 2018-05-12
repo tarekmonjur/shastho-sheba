@@ -24,6 +24,7 @@ class BaseController extends Controller
         $this->middleware(function($request, $next){
             $this->auth = Auth::guard()->user();
             view()->share('auth',$this->auth);
+            view()->share('customer_served',$this->settings->customer_served);
 
             view()->share('categories', $this->headerMenuData['categories']);
             view()->share('topCategories', $this->headerMenuData['topCategories']);

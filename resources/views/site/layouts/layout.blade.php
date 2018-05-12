@@ -57,18 +57,36 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
     <![endif]-->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-103610875-2"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118589267-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-103610875-2');
+  gtag('config', 'UA-118589267-1');
 </script>
 
 </head>
 
 <body>
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution="setup_tool"
+  page_id="1894653503898704"
+  theme_color="#0084ff">
+</div>
 
 @include('site.layouts.common.header')
 
@@ -113,7 +131,7 @@
     if(session($msg)){
     ?>
     <script type="text/javascript">
-        swal({title: '{{ucfirst($msg)}} !', text:'{{session($msg)}}', type: '{{$msg}}', showCancelButton: false, showConfirmButton: false, timer: 3000});
+        swal({title: '{{ucfirst($msg)}} !', text:'{{session($msg)}}', type: '{{$msg}}', showCancelButton: false, showConfirmButton: false, timer: 5000});
     </script>
 <?php } }?>
 

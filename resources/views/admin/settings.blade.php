@@ -65,6 +65,20 @@
                                 </div>
                             </div>
                         </div>
+                    
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group {{ $errors->has('customer_served') ? ' has-error' : '' }}">
+                                    <label for="customer_served">Customer Served <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="customer_served" value="{{ (old('customer_served'))?:$settings->customer_served }}" placeholder="Enter Customer Served">
+                                    @if ($errors->has('customer_served'))
+                                        <span class="help-block">
+                                    <strong>{{ $errors->first('customer_served') }}</strong>
+                                </span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="box-footer">
